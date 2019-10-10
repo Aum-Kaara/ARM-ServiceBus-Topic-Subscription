@@ -4,7 +4,7 @@
   "parameters": {
     "namespaces_notification_hub_sp_name": {
       "defaultValue": "notification-hub-sp",
-      "type": "String"
+      "type": "string"
     }
   },
   "variables": {},
@@ -80,5 +80,11 @@
         "autoDeleteOnIdle": "P10675199DT2H48M5.4775807S"
       }
     }
-  ]
+  ],
+  "outputs": {
+    "sbconnectionString": {
+      "type": "string",
+      "value": "[listKeys(resourceId(concat('Microsoft.ServiceBus/namespaces/AuthorizationRules'),parameters('namespaces_notification_hub_sp_name'),'RootManageSharedAccessKey'),'2015-08-01').primaryConnectionString]"
+    }
+  }
 }
